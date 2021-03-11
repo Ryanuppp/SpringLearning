@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.AdSpy.dao.AdDao">
+    <resultMap id="BaseAd" type="com.AdSpy.entity.Advertisement">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="createId" property="createId" jdbcType="INTEGER"/>
+        <result column="category" property="category" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="BaseAd">
+        select * from ads;
+    </select>
+
+    <select id="findAdByCreatorId" resultMap="BaseAd" parameterType="int">
+        select * from ads where creatorId=#{creatorId};
+    </select>
+</mapper>
+
